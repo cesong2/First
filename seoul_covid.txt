@@ -1,0 +1,93 @@
+
+
+df['조치사항'].unique()
+
+df.columns
+
+df.isnull().sum()
+
+"""#불필요한 컬럼 삭제"""
+
+df.drop(columns=['환자번호','국적','환자정보','조치사항','이동경로','등록일','수정일','노출여부'],inplace =True)
+df
+
+df.dtypes
+
+"""# 확진일 -> datetime"""
+
+df['확진일'] = pd.to_datetime(df['확진일'])
+df.dtypes
+
+#지역의 공백제거
+df['지역'].unique()
+
+df['지역'].nunique()
+
+df['지역'] = df['지역'].str.strip()
+
+"""#지역, 타입을 category로 변경"""
+
+df['지역'] = df['지역'].astype('category')
+
+df.info()
+
+"""#구별 확진자 동향
+#확진일 - 구별 확진자수 집계
+#pivotable로 만들기
+
+# 지역       구
+# 날자
+"""
+
+df.pivot_table(index= ["확진일"],columns=["지역"],values=['연번'], aggfunc= "count", margins=True).tail()
+
+df_gu = pd.pivot_table(df, index='확진일', columns='지역', values = '연번', aggfunc = "count", margins=True)
+
+"""##서울시 일별 추가 확진자 동향"""
+
+df_gu
+
+s_date = df_gu['All'][:-1]
+s_date
+
+#일별 추가 확진자가 많았던 순
+s_date.sort_values(ascending =False)
+
+#서울시 일별 추가 확진자 시각화
+x = s_date.index
+y = s_date.values
+plt.plot(x,y)
+plt.title('서울시 일별 추가 확진자 시각화')
+plt.xlabel('확진자')
+plt.ylabel('확진자수')
+plt.xticks(rotation=45)
+plt.show()
+
+a = s_date.sort_values(ascending =False)
+plt.xlabel('확진자')
+plt.ylabel('확진자수')
+s_gu.plot(kind='barh', grid= True, figsize=(20,10), title= '확진자수',color = 'purple')
+plt.legend()
+plt.show()
+
+s_gu = df_gu.loc['All'][:-1]
+
+s_gu = s_gu.sort_values(ascending=True)
+
+s_gu
+
+#접촉력에 따른 확진자수 best10
+a = df['접촉력'].value_counts()[:10].to_frame()
+a
+
+df.pivot_table(index= ['접촉력'],columns=["지역"],values=['연번'], aggfunc= "count", margins=True)
+
+import numpy as np
+from datetime import date
+df
+
+df['확진일']
+
+#확진일에 따른 데이터 추출
+df[(df['확진일'].dt.year ==2021) &(df['확진일'].dt.month ==9)]['접촉력'].value_counts()[:10].to_frame()
+
