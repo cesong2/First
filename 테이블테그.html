@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>테이블태그</title>
+  </head>
+  <body>
+    <h1>테이블 태그</h1>
+    <hr />
+    <table>
+      <title>상품 구성 페이지</title>
+      <style>
+        table {
+          border: 1px solid #ccc;
+          border-collapse: collapse;
+        }
+        td,
+        th {
+          border: 1px solid #ccc;
+          padding: 10px;
+          text-align: center;
+        }
+      </style>
+    </table>
+    <table>
+      <caption></caption>
+      <tr>
+        <th></th>
+        <th>월</th>
+        <th>화</th>
+        <th>수</th>
+        <th>목</th>
+        <th>금</th>
+      </tr>
+      <tr>
+        <td>1교시</td>
+        <td rowspan="2">국어</td>
+        <td>수학</td>
+        <td>영어</td>
+        <td colspan="2">체육</td>
+      </tr>
+      <tr>
+        <td>2교시</td>
+        <td>음악</td>
+        <td>영어</td>
+        <td>사회</td>
+        <td>과학</td>
+      </tr>
+    </table>
+    <p></p>
+    <hr />
+    <p></p>
+    <table>
+      <title>상품 구성 페이지</title>
+      <style>
+        table {
+          border: 2px solid #ccc;
+          border-collapse: collapse;
+        }
+        td,
+        th {
+          border: 2px solid #000;
+          padding: 10px;
+        }
+      </style>
+    </table>
+    <table>
+      <tr>
+        <th>이름</th>
+        <th colspan="5">세종대</th>
+        <th rowspan="3">사 진</th>
+      </tr>
+      <tr>
+        <td>전화번호</td>
+        <td colspan="5">010-2345-6789</td>
+      </tr>
+      <tr>
+        <td>이메일</td>
+        <td>man@sejong.ac.kr</td>
+      </tr>
+      <tr>
+        <td>주소</td>
+        <td colspan="8">
+          서울특별시 광진구 능동로 209 (군자동) 세종대학교 국제교육원
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
